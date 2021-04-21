@@ -6,21 +6,21 @@ const Child = () => {
   const [count, setCount] = useState(() => {
     console.log('%c   Child: useState(() => 0)', 'color: tomato');
     return 0;
-  })
+  });
 
   useEffect(() => {
     console.log('%c   Child: useEffect(() => {})', 'color: LightCoral');
     return () => {
       console.log('%c   Child: useEffect(() => {}) cleanup', 'color: LightCoral')
     }
-  })
+  });
 
   useEffect(() => {
     console.log('%c   Child: useEffect(() => {}, [])', 'color: MediumTurquoise');
     return () => {
       console.log('%c   Child: useEffect(() => {}, []) cleanup', 'color: MediumTurquoise')
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     console.log('%c   Child: useEffect(() => {}, [count])', 'color: HotPink');
@@ -33,14 +33,14 @@ const Child = () => {
     <button onClick={() => setCount(previousCount => previousCount + 1)}>
       {count}
     </button>
-  )
+  );
 
   console.log('%c    Child: render end', 'color: MediumSpringGreen');
 
   return element;
-}
+};
 
-function App() {
+const App = () => {
   console.log('%cApp: render start', 'color: MediumSpringGreen')
   
   const [showChild, setShowChild] = useState(() => {
@@ -80,11 +80,11 @@ function App() {
         {showChild ? <Child /> : null}
       </div>
     </>
-  )
+  );
 
   console.log('%cApp: render end', 'color: MediumSpringGreen');
 
   return element;
-}
+};
 
 export default App;
